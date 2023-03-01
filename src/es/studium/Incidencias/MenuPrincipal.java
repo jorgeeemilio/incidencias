@@ -94,5 +94,10 @@ public class MenuPrincipal implements WindowListener, ActionListener
 		{
 			new NuevoUsuario();
 		}
+		// Listado Usuarios
+		else if(e.getSource().equals(mniListadoUsuario))
+		{
+			new ListadoUsuarios();
+		}
 	}
 }

@@ -1,5 +1,6 @@
 package es.studium.Incidencias;
 
+import java.awt.TextArea;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -85,5 +86,31 @@ public class Conexion
 			System.out.println("Error 4-"+sqle.getMessage());
 			return 1;
 		}
+	}
+
+	public void rellenarListadoUsuarios(TextArea txaListado)
+	{
+		String sentencia = "SELECT idUsuario, nombreUsuario, correoElectronicoUsuario FROM usuarios;";
+		try
+		{
+			// Crear una sentencia
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			// Crear un objeto ResultSet para guardar lo obtenido
+			// y ejecutar la sentencia SQL
+			ResultSet resultado = statement.executeQuery(sentencia);
+			while(resultado.next())
+			{
+				txaListado.append(resultado.getString("idUsuario")+" ");
+				txaListado.append(resultado.getString("nombreUsuario")+" ");
+				txaListado.append(resultado.getString("correoElectronicoUsuario")+"\n");
+				
+			}
+			
+		}
+		catch (SQLException sqle)
+		{
+			System.out.println("Error 5-"+sqle.getMessage());
+		}
+		
 	}
 }
