@@ -39,7 +39,6 @@ public class ListadoUsuarios implements WindowListener, ActionListener
 	@Override
 	public void windowClosing(WindowEvent e)
 	{
-
 		ventana.setVisible(false);
 	}
 	@Override

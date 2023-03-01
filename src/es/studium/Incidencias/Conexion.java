@@ -1,5 +1,6 @@
 package es.studium.Incidencias;
 
+import java.awt.Choice;
 import java.awt.TextArea;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -103,14 +104,55 @@ public class Conexion
 				txaListado.append(resultado.getString("idUsuario")+" ");
 				txaListado.append(resultado.getString("nombreUsuario")+" ");
 				txaListado.append(resultado.getString("correoElectronicoUsuario")+"\n");
-				
+
 			}
-			
+
 		}
 		catch (SQLException sqle)
 		{
 			System.out.println("Error 5-"+sqle.getMessage());
 		}
-		
+	}
+
+	public void rellenarChoiceUsuarios(Choice choUsuarios)
+	{
+		String sentencia = "SELECT idUsuario, nombreUsuario FROM usuarios ORDER BY 1;";
+		try
+		{
+			// Crear una sentencia
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			// Crear un objeto ResultSet para guardar lo obtenido
+			// y ejecutar la sentencia SQL
+			ResultSet resultado = statement.executeQuery(sentencia);
+			choUsuarios.add("Elegir usuario...");
+			while(resultado.next())
+			{
+				choUsuarios.add(resultado.getString("idUsuario")+"-"+resultado.getString("nombreUsuario"));
+			}
+		}
+		catch (SQLException sqle)
+		{
+			System.out.println("Error 6-"+sqle.getMessage());
+		}
+
+
+	}
+
+	public int eliminarUsuario(String idUsuario)
+	{
+		String sentencia = "DELETE FROM usuarios WHERE idUsuario = " + idUsuario;
+		try
+		{
+			// Crear una sentencia
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			// Ejecutar la sentencia SQL
+			statement.executeUpdate(sentencia);
+			return 0;
+		}
+		catch (SQLException sqle)
+		{
+			System.out.println("Error 7-"+sqle.getMessage());
+			return 1;
+		}
 	}
 }

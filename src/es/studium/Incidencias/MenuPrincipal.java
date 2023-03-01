@@ -13,34 +13,34 @@ import java.awt.event.WindowListener;
 public class MenuPrincipal implements WindowListener, ActionListener
 {
 	Frame ventana = new Frame("Menú Principal");
-	
+
 	MenuBar menuBar = new MenuBar();
-	
+
 	Menu mnuUsuarios = new Menu("Usuarios");
 	Menu mnuElementos = new Menu("Elementos");
 	Menu mnuIndicencias = new Menu("Incidencias");
-	
+
 	MenuItem mniNuevoUsuario = new MenuItem("Nuevo");
 	MenuItem mniListadoUsuario = new MenuItem("Listado");
 	MenuItem mniBajaUsuario = new MenuItem("Baja");
 	MenuItem mniModificarUsuario = new MenuItem("Modificar");
-	
+
 	MenuItem mniNuevoElemento = new MenuItem("Nuevo");
 	MenuItem mniListadoElemento = new MenuItem("Listado");
 	MenuItem mniBajaElemento = new MenuItem("Baja");
 	MenuItem mniModificarElemento = new MenuItem("Modificar");
-	
+
 	MenuItem mniNuevoIncidencias = new MenuItem("Nuevo");
 	MenuItem mniListadoIncidencias = new MenuItem("Listado");
 	MenuItem mniBajaIncidencias = new MenuItem("Baja");
 	MenuItem mniModificarIncidencias = new MenuItem("Modificar");
-	
+
 	MenuPrincipal()
 	{
 		ventana.setLayout(new FlowLayout());
 		ventana.setSize(400,400);
 		ventana.addWindowListener(this);
-		
+
 		mniNuevoUsuario.addActionListener(this);
 		mniListadoUsuario.addActionListener(this);
 		mniBajaUsuario.addActionListener(this);
@@ -49,7 +49,7 @@ public class MenuPrincipal implements WindowListener, ActionListener
 		mnuUsuarios.add(mniListadoUsuario);
 		mnuUsuarios.add(mniBajaUsuario);
 		mnuUsuarios.add(mniModificarUsuario);
-		
+
 		mniNuevoElemento.addActionListener(this);
 		mniListadoElemento.addActionListener(this);
 		mniBajaElemento.addActionListener(this);
@@ -58,13 +58,13 @@ public class MenuPrincipal implements WindowListener, ActionListener
 		mnuElementos.add(mniListadoElemento);
 		mnuElementos.add(mniBajaElemento);
 		mnuElementos.add(mniModificarElemento);
-		
+
 		menuBar.add(mnuUsuarios);
 		menuBar.add(mnuElementos);
 		menuBar.add(mnuIndicencias);
-		
+
 		ventana.setMenuBar(menuBar);
-		
+
 		ventana.setResizable(false);
 		ventana.setLocationRelativeTo(null);
 		ventana.setVisible(true);
@@ -98,6 +98,11 @@ public class MenuPrincipal implements WindowListener, ActionListener
 		else if(e.getSource().equals(mniListadoUsuario))
 		{
 			new ListadoUsuarios();
+		}
+		// Eliminar Usuario
+		else if(e.getSource().equals(mniBajaUsuario))
+		{
+			new EliminarUsuario();
 		}
 	}
 }
