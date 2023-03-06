@@ -56,6 +56,12 @@ public class EliminarUsuario implements WindowListener, ActionListener
 		{
 			dlgSeguro.setVisible(false);
 		}
+		else if(dlgMensaje.isActive())
+		{
+			dlgMensaje.setVisible(false);
+			dlgSeguro.setVisible(false);
+			ventana.setVisible(false);
+		}
 		else
 		{
 			ventana.setVisible(false);
