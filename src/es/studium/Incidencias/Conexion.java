@@ -45,7 +45,7 @@ public class Conexion
 		return null;
 	}
 
-	public boolean comprobarCredenciales(String u, String c)
+	public int comprobarCredenciales(String u, String c)
 	{
 		String cadena = "SELECT * FROM usuarios WHERE nombreUsuario = '"+ u + "' AND claveUsuario = SHA2('" + c + "',256);";
 		try
@@ -57,18 +57,18 @@ public class Conexion
 			rs = statement.executeQuery(cadena);
 			if(rs.next())
 			{
-				return true;
+				return rs.getInt("tipoUsuario");
 			}
 			else
 			{
-				return false;
+				return -1;
 			}
 		}
 		catch (SQLException sqle)
 		{
 			System.out.println("Error 3-"+sqle.getMessage());
 		}
-		return false;
+		return -1;
 	}
 
 	public int altaUsuario(String sentencia)

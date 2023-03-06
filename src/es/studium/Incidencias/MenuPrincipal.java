@@ -35,8 +35,11 @@ public class MenuPrincipal implements WindowListener, ActionListener
 	MenuItem mniBajaIncidencias = new MenuItem("Baja");
 	MenuItem mniModificarIncidencias = new MenuItem("Modificar");
 
-	MenuPrincipal()
+	int tipoUsuario;
+
+	MenuPrincipal(int t)
 	{
+		tipoUsuario = t;
 		ventana.setLayout(new FlowLayout());
 		ventana.setSize(400,400);
 		ventana.addWindowListener(this);
@@ -46,18 +49,24 @@ public class MenuPrincipal implements WindowListener, ActionListener
 		mniBajaUsuario.addActionListener(this);
 		mniModificarUsuario.addActionListener(this);
 		mnuUsuarios.add(mniNuevoUsuario);
-		mnuUsuarios.add(mniListadoUsuario);
-		mnuUsuarios.add(mniBajaUsuario);
-		mnuUsuarios.add(mniModificarUsuario);
+		if(tipoUsuario==0)
+		{
+			mnuUsuarios.add(mniListadoUsuario);
+			mnuUsuarios.add(mniBajaUsuario);
+			mnuUsuarios.add(mniModificarUsuario);
+		}
 
 		mniNuevoElemento.addActionListener(this);
 		mniListadoElemento.addActionListener(this);
 		mniBajaElemento.addActionListener(this);
 		mniModificarElemento.addActionListener(this);
 		mnuElementos.add(mniNuevoElemento);
-		mnuElementos.add(mniListadoElemento);
-		mnuElementos.add(mniBajaElemento);
-		mnuElementos.add(mniModificarElemento);
+		if(tipoUsuario==0)
+		{
+			mnuElementos.add(mniListadoElemento);
+			mnuElementos.add(mniBajaElemento);
+			mnuElementos.add(mniModificarElemento);
+		}
 
 		menuBar.add(mnuUsuarios);
 		menuBar.add(mnuElementos);

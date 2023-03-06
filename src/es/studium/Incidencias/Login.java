@@ -27,6 +27,8 @@ public class Login implements WindowListener, ActionListener
 	
 	Conexion conexion = new Conexion();
 	
+	int tipoUsuario;
+	
 	Login()
 	{
 		ventanaLogin.setLayout(new FlowLayout());
@@ -78,9 +80,10 @@ public class Login implements WindowListener, ActionListener
 			String usuario = txtUsuario.getText();
 			String clave = txtClave.getText();
 			// Credenciales correctas
-			if(conexion.comprobarCredenciales(usuario, clave))
+			tipoUsuario = conexion.comprobarCredenciales(usuario, clave);
+			if(tipoUsuario!=-1)
 			{
-				new MenuPrincipal();
+				new MenuPrincipal(tipoUsuario);
 				ventanaLogin.setVisible(false);
 			}
 			// Credenciales incorrectas
