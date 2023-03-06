@@ -163,5 +163,9 @@ public class ModificarUsuario implements WindowListener, ActionListener
 			dlgMensaje.setLocationRelativeTo(null);
 			dlgMensaje.setVisible(true);
 		}
+		else if (e.getSource().equals(btnCancelar))
+		{
+			dlgEdicion.setVisible(false);
+		}
 	}
 }
