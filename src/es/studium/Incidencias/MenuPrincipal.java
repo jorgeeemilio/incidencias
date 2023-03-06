@@ -104,5 +104,10 @@ public class MenuPrincipal implements WindowListener, ActionListener
 		{
 			new EliminarUsuario();
 		}
+		// Modificar Usuario
+		else if(e.getSource().equals(mniModificarUsuario))
+		{
+			new ModificarUsuario();
+		}
 	}
 }
