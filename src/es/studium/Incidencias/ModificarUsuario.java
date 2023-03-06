@@ -71,6 +71,10 @@ public class ModificarUsuario implements WindowListener, ActionListener
 			dlgEdicion.setVisible(false);
 			ventana.setVisible(false);
 		}
+		else if (dlgMensaje.isActive())
+		{
+			dlgMensaje.setVisible(false);
+		}
 		else
 		{
 			ventana.setVisible(false);
